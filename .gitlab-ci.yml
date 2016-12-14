@@ -1,0 +1,10 @@
+test-ruby-21:
+        image: ruby:2.1
+        stage: test
+        tags:
+                - docker
+                - shared
+        script:
+                - bundle install
+                - bundle exec rake spec
+
