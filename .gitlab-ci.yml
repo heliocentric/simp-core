@@ -1,5 +1,5 @@
 test-ruby-21:
-        image: simpproject/centos6:ruby2.1
+        image: simpproject/centos6:ruby21
         stage: test
         tags:
                 - docker
