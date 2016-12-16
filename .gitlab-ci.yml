@@ -5,7 +5,7 @@ test-ruby-21:
                 - docker
                 - shared
         script:
-                - apt-get install -y rpm
+                - yum install -y rpm
                 - bundle install
                 - bundle exec rake spec
 
