@@ -3,7 +3,6 @@ test-ruby-21:
         stage: test
         tags:
                 - docker
-                - shared
         script:
                 - yum install -y rpm
                 - bundle install
