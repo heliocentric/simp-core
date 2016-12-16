@@ -4,7 +4,6 @@ test-ruby-21:
         tags:
                 - docker
         script:
-                - yum install -y rpm
                 - bundle install
                 - bundle exec rake spec
 
