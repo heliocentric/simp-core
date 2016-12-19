@@ -1,3 +1,4 @@
+# vim: set syntax=ruby ts=2 sw=2 expandtab :
 # Variables:
 #
 # SIMP_GEM_SERVERS | a space/comma delimited list of rubygem servers
@@ -44,4 +45,3 @@ group :debug do
   gem 'pry-doc'
 end
 
-#vim: set syntax=ruby:

@@ -3,6 +3,7 @@ test-ruby-21:
         stage: test
         tags:
                 - docker
+                - shared
         script:
                 - bundle install
                 - bundle exec rake spec
