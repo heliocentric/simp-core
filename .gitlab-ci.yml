@@ -14,5 +14,3 @@ acceptance-test:
   script:
     - bundle install --no-binstubs --path=vendor
     - bundle exec rake beaker:suites[default]
-    - bundle exec rake beaker:suites[rpm_el6]
-    - bundle exec rake beaker:suites[rpm_el7]
