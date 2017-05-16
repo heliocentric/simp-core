@@ -20,4 +20,4 @@ acceptance-test-inspec:
     - beaker
   script:
     - bundle install --no-binstubs --path=vendor
-    - bundle exec rake beaker:suites[inspec]
+    - bundle exec rake beaker:suites[compliance]
