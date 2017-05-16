@@ -7,10 +7,17 @@ test-ruby-21:
         script:
                 - bundle install
                 - bundle exec rake spec
-acceptance-test:
+acceptance-test-r10k:
   stage: test
   tags:
     - beaker
   script:
     - bundle install --no-binstubs --path=vendor
     - bundle exec rake beaker:suites[default]
+acceptance-test-inspec:
+  stage: test
+  tags:
+    - beaker
+  script:
+    - bundle install --no-binstubs --path=vendor
+    - bundle exec rake beaker:suites[inspec]
