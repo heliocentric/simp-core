@@ -1,28 +1,27 @@
----
-acceptance-default-test:
-  stage: test
-  tags:
-    - beaker
-  script:
-    - rm Gemfile.lock || true
-    - bundle install --no-binstubs --path=vendor
-    - bundle exec rake beaker:suites[default]
-
-acceptance-rpm_el6-test:
-  stage: test
-  tags:
-    - beaker
-  script:
-    - rm Gemfile.lock || true
-    - bundle install --no-binstubs --path=vendor
-    - bundle exec rake beaker:suites[rpm_el6]
-
-acceptance-rpm_el7-test:
-  stage: test
-  tags:
-    - beaker
-  script:
-    - rm Gemfile.lock || true
-    - bundle install --no-binstubs --path=vendor
-    - bundle exec rake beaker:suites[rpm_el7]
+stages:
+  - build
+  - acceptance
+build_centos7_x64:
+        stage: build
+        image: simpproject/rpm-build:latest
+        cache:
+                paths:
+                        - .bundle
+                        - vendor
+        tags:
+                - docker
+        artifacts:
+                paths:
+                        - build/distributions/CentOS/7/x86_64/SIMP_ISO
+                expire_in: 1 day
+        script:
+                - rm Gemfile.lock || true
+                - mkdir -p build/distributions/CentOS/7/x86_64/DVD_Overlay
+                - pushd $(pwd)
+                - cd build/distributions/CentOS/7/x86_64/DVD_Overlay
+                - wget http://simp-project.com/ISO/SIMP/tar_bundles/SIMP-6.1.0-0.el7-CentOS-7-x86_64.tar.gz
+                - popd
+                - ls -alh build/distributions/CentOS/7/x86_64/DVD_Overlay
+                - bundle install --no-binstubs --path=vendor
+                - SIMP_BUILD_prompt=no SIMP_ENV_NO_SELINUX_DEPS=yes bundle exec rake build:auto[/data/cache/,6.X]
 
