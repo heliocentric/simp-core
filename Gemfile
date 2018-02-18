@@ -17,7 +17,7 @@ end
 
 
 # mandatory gems
-#gem 'json', '1.8.5'
+gem 'json_pure'
 gem 'bundler'
 gem 'coderay'
 gem 'dotenv'
